@@ -5,7 +5,7 @@ from collections import OrderedDict
 import sys
 import time
 
-from xbcf import XBCF
+from xbcausalforest import XBCF
 
 
 def rmse(y1, y2):
@@ -49,12 +49,13 @@ y = ftrue + sigma * np.random.rand(n)
 print(type(y))
 print(type(z))
 model = XBCF(
-    num_sweeps=150, burnin=25, max_depth=100, num_trees_pr=100, num_trees_trt=50
+    num_sweeps=150, burnin=25, max_depth=100, num_trees_pr=100,
+    num_trees_trt=50, p_categorical_pr=d, p_categorical_trt=d,
 )
 # print(type(z[0]))
-params = model.get_params()
+params = model.getParams()
 print(params)
-obj = model.fit(x, x, y, z, d - 1)
+obj = model.fit(x, x, y, z)
 # print(type(obj.tauhats))
 # print("No. of dimensions: ", obj.tauhats.ndim)
 # print("Shape of array: ", obj.tauhats.shape)
