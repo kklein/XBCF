@@ -1,0 +1,15 @@
+name: xbcf
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python>=3.8
+  # Test dependencies
+  - xgboost
+  - numpy
+  - scikit-learn
+  - pandas
+  # Build dependencies
+  - cxx-compiler
+  - swig
+
